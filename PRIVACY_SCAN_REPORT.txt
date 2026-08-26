@@ -1,0 +1,8 @@
+PRIVACY SCAN REPORT
+Generated: 2026-08-26
+
+Files scanned: 42
+Potential findings: 0
+
+PASS: no internal project names, private IPs, internal Windows paths, concrete credential assignments, or connection-string patterns detected.
+All datasets and screenshots are synthetic.

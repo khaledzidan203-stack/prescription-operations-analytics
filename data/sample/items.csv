@@ -1,0 +1,13 @@
+item_id,item_name,category,current_unit_price
+I0001,Item Alpha,Category A,12.5
+I0002,Item Bravo,Category A,18.0
+I0003,Item Charlie,Category B,32.75
+I0004,Item Delta,Category B,9.9
+I0005,Item Echo,Category C,55.0
+I0006,Item Foxtrot,Category C,21.25
+I0007,Item Golf,Category D,7.5
+I0008,Item Hotel,Category D,41.4
+I0009,Item India,Category E,26.0
+I0010,Item Juliet,Category E,63.0
+I0011,Item Kilo,Category F,14.25
+I0012,Item Lima,Category F,88.0
