@@ -26,3 +26,46 @@ Shortage Records Affected = DISTINCTCOUNT(FactShortage[record_id])
 ```
 
 Do not replace blank `known_value_sar` with zero in Power Query if you want the Value N/A KPI to remain valid.
+
+## Expanded operational measures
+
+The following patterns apply when the corresponding curated facts are built:
+
+```DAX
+WL Prescriptions = DISTINCTCOUNT(FactWlDispense[prescription_id])
+
+Upcoming Prescriptions =
+CALCULATE(
+    [WL Prescriptions],
+    FactWlDispense[wasfaty_status] = "Not Yet",
+    FactWlDispense[next_fill_at_utc] > UTCNOW()
+)
+
+Run-X Records =
+CALCULATE(
+    DISTINCTCOUNT(FactOperationalDecision[record_id]),
+    FactOperationalDecision[record_type] = "Run-X e-RXs"
+)
+
+Pick-up Records =
+CALCULATE(
+    DISTINCTCOUNT(FactOperationalDecision[record_id]),
+    FactOperationalDecision[record_type] = "Pick-up e-RXs"
+)
+
+Run-X SAR 200 or Less =
+CALCULATE(
+    [Run-X Records],
+    NOT ISBLANK(FactOperationalDecision[known_value_sar]),
+    FactOperationalDecision[known_value_sar] <= 200
+)
+
+Operational Value N/A =
+CALCULATE(
+    DISTINCTCOUNT(FactOperationalDecision[record_id]),
+    ISBLANK(FactOperationalDecision[known_value_sar])
+)
+```
+
+Due and Overdue should use a Saudi business-date dimension/boundary rather than
+the viewer workstation's local date.

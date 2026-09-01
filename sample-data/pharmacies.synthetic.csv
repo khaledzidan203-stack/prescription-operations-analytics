@@ -1,0 +1,4 @@
+pharmacy_id,pharmacy_code,pharmacy_name,city,is_active
+DEMO-PH-ID-001,DEMO-PH-001,Demo Pharmacy North,Demo City A,true
+DEMO-PH-ID-002,DEMO-PH-002,Demo Pharmacy Central,Demo City B,true
+DEMO-PH-ID-003,DEMO-PH-003,Demo Pharmacy Archive,Demo City C,false

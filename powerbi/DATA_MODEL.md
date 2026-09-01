@@ -1,5 +1,8 @@
 # Data Model Documentation
 
+This file documents the existing synthetic analytical companion. It is not an
+export of the transactional EF Core model.
+
 ## Tables / files
 
 ### FactRecord (`records.csv`)
@@ -42,3 +45,17 @@ DimBranch (1) ─────── (*) FactRecord (1) ─────── (*)
 - DimItem[item_id] 1 → * FactShortage[item_id]
 
 Prefer single-direction filters from dimensions to facts. Use a proper Date dimension for production-quality time intelligence.
+
+## Operational extension guidance
+
+An expanded semantic model can add separate facts rather than overloading
+`FactRecord`:
+
+- `FactWlDispense` for WL sequence and scheduling.
+- `FactOperationalDecision` for Run-X/Pick-up final decisions and nullable value.
+- `FactDeliveryRequest` for request/pull/completion states.
+- `FactTransfer` at transfer-hop grain.
+- `FactProcurementLine` at historical batch-line grain.
+
+Shared dimensions can include Date, Pharmacy, Item, Record Type, Status, and
+Reason. Keep transactional entity keys synthetic in public data.

@@ -1,0 +1,4 @@
+transfer_id,original_prescription_id,source_prescription_id,destination_prescription_id,from_pharmacy_id,to_pharmacy_id,transfer_type,status,created_at_utc
+DEMO-TRANSFER-001,DEMO-RX-000001,DEMO-RX-000001,,DEMO-PH-ID-001,DEMO-PH-ID-002,Pre-Dispense,Pending Receipt,2026-08-28T08:00:00Z
+DEMO-TRANSFER-002,DEMO-RX-000007,DEMO-RX-000007,DEMO-RX-000009,DEMO-PH-ID-001,DEMO-PH-ID-002,Delivery,Received,2026-08-29T09:00:00Z
+DEMO-TRANSFER-003,DEMO-RX-000007,DEMO-RX-000009,DEMO-RX-000007,DEMO-PH-ID-002,DEMO-PH-ID-001,Return to Original,Cancelled,2026-08-30T10:00:00Z

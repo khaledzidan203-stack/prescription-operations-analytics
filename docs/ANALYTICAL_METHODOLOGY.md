@@ -1,5 +1,10 @@
 # Analytical Methodology
 
+This methodology belongs to the **Operational Analytics Companion**. It consumes
+synthetic flattened facts and remains intentionally separate from the private
+transactional application. Confirmed operational KPI definitions are maintained
+in [`kpi_dictionary/operational-kpis.md`](kpi_dictionary/operational-kpis.md).
+
 1. **Define the business grain.** One row in the main fact equals one operational record.
 2. **Normalize categorical states.** Status, channel, delivery, and reasons use controlled values.
 3. **Separate facts from dimensions.** Branch and item descriptors are modeled independently.

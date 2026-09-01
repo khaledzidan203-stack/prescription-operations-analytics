@@ -1,5 +1,8 @@
 # Data Model Documentation
 
+> Synthetic analytical model. The curated operational domain model and ERD are
+> documented under [`data_model/`](data_model/).
+
 ## Tables / files
 
 ### FactRecord (`records.csv`)

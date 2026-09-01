@@ -1,0 +1,10 @@
+prescription_id,synthetic_national_id,patient_name,pharmacy_id,record_type,received_at_utc,final_status,next_fill_at_utc,delivery_status,known_value_sar
+DEMO-RX-000001,SYN-NID-000001,Synthetic Patient 001,DEMO-PH-ID-001,WL e-RXs,2026-08-20T08:00:00Z,Not Yet,2026-09-03T07:30:00Z,Pending,210.00
+DEMO-RX-000002,SYN-NID-000002,Synthetic Patient 002,DEMO-PH-ID-001,WL e-RXs,2026-08-21T09:15:00Z,Not Yet,2026-08-30T06:00:00Z,Pending,90.00
+DEMO-RX-000003,SYN-NID-000003,Synthetic Patient 003,DEMO-PH-ID-002,Run-X e-RXs,2026-08-22T10:00:00Z,Done,,N/A,245.00
+DEMO-RX-000004,SYN-NID-000004,Synthetic Patient 004,DEMO-PH-ID-002,Run-X e-RXs,2026-08-23T11:00:00Z,Not Yet,,N/A,
+DEMO-RX-000005,SYN-NID-000005,Synthetic Patient 005,DEMO-PH-ID-001,Pick-up e-RXs,2026-08-24T12:00:00Z,Done,,N/A,120.00
+DEMO-RX-000006,SYN-NID-000006,Synthetic Patient 006,DEMO-PH-ID-002,Pick-up e-RXs,2026-08-25T13:00:00Z,Not Yet,,N/A,
+DEMO-RX-000007,SYN-NID-000007,Synthetic Patient 007,DEMO-PH-ID-001,WL e-RXs,2026-08-26T14:00:00Z,Done,,Done,150.00
+DEMO-RX-000008,SYN-NID-000008,Synthetic Patient 008,DEMO-PH-ID-002,Run-X e-RXs,2026-08-27T15:00:00Z,Not Yet,,N/A,200.00
+DEMO-RX-000009,SYN-NID-000007,Synthetic Patient 007,DEMO-PH-ID-002,WL e-RXs,2026-08-29T09:05:00Z,Done,,Transferred,150.00

@@ -1,5 +1,9 @@
 # Architecture
 
+> **Operational Analytics Companion.** This document describes the original
+> synthetic Python/SQL/Power BI layer. The verified transactional architecture is
+> documented in [`architecture/application-architecture.md`](architecture/application-architecture.md).
+
 ## Portfolio architecture
 
 ```text
@@ -18,6 +22,14 @@ CSV files ──→ SQL Server schema/views/queries
 ## Enterprise design demonstrated conceptually
 
 The portfolio is derived from a centralized multi-branch application pattern in which a secured web application writes to a central relational database and analytical dashboards aggregate server-side. The public repo intentionally does not reproduce private production code or infrastructure configuration.
+
+The companion channel labels remain generalized for reproducibility:
+
+- `Standard` is a WL-like analytical channel.
+- `Call-Back` is a Run-X-like analytical channel.
+- `Pickup` is a Pick-up-like analytical channel.
+
+They are analytical proxies, not a copy of the transactional EF Core schema.
 
 ## Design principles
 

@@ -1,0 +1,4 @@
+missing_item_id,prescription_id,pharmacy_id,item_id,required_quantity,needed_by_date,status,procurement_batch
+DEMO-MISSING-001,DEMO-RX-000001,DEMO-PH-ID-001,DEMO-ITEM-ID-002,2,2026-09-03,Open,
+DEMO-MISSING-002,DEMO-RX-000002,DEMO-PH-ID-001,DEMO-ITEM-ID-003,1,2026-08-30,Open,
+DEMO-MISSING-003,DEMO-RX-000007,DEMO-PH-ID-001,DEMO-ITEM-ID-004,3,2026-08-28,Closed,DEMO-BATCH-001
