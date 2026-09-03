@@ -1,5 +1,9 @@
 # Business Requirements
 
+> Historical analytics-companion requirements. For the expanded operational
+> problem statement, see
+> [`business_requirements/business-problem.md`](business_requirements/business-problem.md).
+
 ## BR-01 Centralized operational view
 The solution shall provide a governed record model that supports both branch-level and network-level analysis.
 

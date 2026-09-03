@@ -1,0 +1,10 @@
+record_id,synthetic_subject_id,synthetic_subject_name,site_id,workflow_category,received_at_utc,status,scheduled_at_utc,fulfilment_status,known_value
+DEMO-REC-000001,SYN-SUB-000001,Synthetic Subject 001,DEMO-SITE-001,Workflow Alpha,2026-08-20T08:00:00Z,Open,2026-09-07T07:30:00Z,Pending,175.00
+DEMO-REC-000002,SYN-SUB-000002,Synthetic Subject 002,DEMO-SITE-001,Workflow Alpha,2026-08-21T09:15:00Z,Open,2026-09-11T06:00:00Z,Pending,85.00
+DEMO-REC-000003,SYN-SUB-000003,Synthetic Subject 003,DEMO-SITE-002,Workflow Beta,2026-08-22T10:00:00Z,Completed,,N/A,185.00
+DEMO-REC-000004,SYN-SUB-000004,Synthetic Subject 004,DEMO-SITE-002,Workflow Beta,2026-08-23T11:00:00Z,Deferred,,N/A,
+DEMO-REC-000005,SYN-SUB-000005,Synthetic Subject 005,DEMO-SITE-001,Workflow Gamma,2026-08-24T12:00:00Z,Completed,,N/A,95.00
+DEMO-REC-000006,SYN-SUB-000006,Synthetic Subject 006,DEMO-SITE-002,Workflow Gamma,2026-08-25T13:00:00Z,Deferred,,N/A,
+DEMO-REC-000007,SYN-SUB-000007,Synthetic Subject 007,DEMO-SITE-001,Workflow Alpha,2026-08-26T14:00:00Z,Completed,,Completed,135.00
+DEMO-REC-000008,SYN-SUB-000008,Synthetic Subject 008,DEMO-SITE-002,Workflow Beta,2026-08-27T15:00:00Z,Open,,N/A,145.00
+DEMO-REC-000009,SYN-SUB-000009,Synthetic Subject 009,DEMO-SITE-003,Workflow Gamma,2026-08-29T09:05:00Z,Completed,,Redirected,160.00

@@ -1,28 +1,40 @@
-# Architecture
+# Analytics Architecture
 
-## Portfolio architecture
+## Purpose
+
+This portfolio demonstrates a fictional distributed-operations analytics architecture built from synthetic data. It is not a representation of a real employer's system or operating model.
+
+## Logical Layers
 
 ```text
-Synthetic CSV files
-      ↓
-Python validation / normalization
-      ↓
-Reusable analytics functions
-      ↓
-Streamlit + Plotly demo
-
-CSV files ──→ Power BI semantic model
-CSV files ──→ SQL Server schema/views/queries
+Synthetic Sources
+  -> Validation & Cleaning
+  -> Structured Operational Model
+  -> Analytical Transformations
+  -> SQL / Python / Power BI
+  -> KPI & Data Quality Reporting
 ```
 
-## Enterprise design demonstrated conceptually
+## Workflow Categories
 
-The portfolio is derived from a centralized multi-branch application pattern in which a secured web application writes to a central relational database and analytical dashboards aggregate server-side. The public repo intentionally does not reproduce private production code or infrastructure configuration.
+- Workflow Alpha
+- Workflow Beta
+- Workflow Gamma
 
-## Design principles
+These labels are arbitrary and have no mapping to private terminology.
 
-- Single source of truth for status and identifiers
-- Server/database-friendly aggregations
-- Clear separation of data model, calculation engine, and presentation
-- Historical snapshots for values that can change over time
-- Privacy-safe public dataset
+## Shared Design Patterns
+
+- Explicit fact-table grain
+- Site-scoped authorization concepts
+- Historical numeric snapshots
+- Duplicate detection
+- Configurable thresholds
+- Configurable scheduling windows
+- Exception monitoring
+- Transfer lineage
+- Auditable status transitions
+
+## Publication Boundary
+
+Only generic engineering patterns and synthetic examples belong in the public repository. Real workflow names, company-specific rules, internal process sequences, production infrastructure, and confidential data are excluded.

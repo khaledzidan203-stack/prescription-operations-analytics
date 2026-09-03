@@ -1,5 +1,9 @@
 # KPI Definitions
 
+> Original analytics-companion definitions. See the expanded
+> [`operational-kpis.md`](kpi_dictionary/operational-kpis.md) for workflow KPIs and
+> their grains/limitations.
+
 | KPI | Definition | Notes |
 |---|---|---|
 | Total Records | COUNT(record_id) | current filter context |

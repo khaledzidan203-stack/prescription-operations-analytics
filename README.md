@@ -1,194 +1,234 @@
-# Prescription Operations Analytics & Workflow Tracker
+# Distributed Operations Analytics Platform
 
-> **Portfolio Edition — synthetic data only.** This repository is a confidentiality-safe demonstration of a multi-branch prescription-operations analytics and workflow solution. It intentionally contains no production source code, real patient/customer data, internal credentials, private infrastructure details, or proprietary datasets.
+> A privacy-safe portfolio project demonstrating operational analytics, workflow modeling, data quality, security patterns, synthetic data, SQL, Python, and Power BI concepts.
 
-## Executive summary
+This repository is intentionally **generic and synthetic**. It is designed to demonstrate transferable analytics and software-engineering skills without representing, reproducing, or documenting any specific employer, company, customer, internal system, operating model, business rule, or production workflow.
 
-This project demonstrates how operational records from multiple branches can be centralized, validated, modeled, and analyzed to support day-to-day decisions. The portfolio edition focuses on the **Data Analyst / Business Analyst** aspects of the solution: requirements definition, data modeling, KPI design, workflow-state analysis, shortage aggregation, branch-level controls, dashboard design, SQL analysis, data quality, and reproducible synthetic data.
+## Executive Summary
 
-The original business context has been deliberately generalized. Three operational channels are represented as **Standard**, **Call-Back**, and **Pickup**. All identifiers and values are synthetic.
+The project models a fictional distributed service network where local sites process operational records through several independent workflow categories. A central analytics layer measures throughput, completion, backlog, value, exceptions, shortages, transfers, and service performance.
 
-## Business problem
+The public implementation focuses on reusable technical patterns rather than any real organization’s process.
 
-A distributed branch network may receive operational records through multiple channels. Without a centralized model, teams can struggle to answer basic questions consistently: what is complete, what still needs action, what is due next, which branches have item shortages, where values are unknown, and which records have reached delivery.
+## Business Problem
 
-The analytical challenge is to create one governed model that separates operational state from reporting logic, preserves historical values, prevents double counting, and supports both branch-level and network-level views.
+Distributed operations often create fragmented data, inconsistent status definitions, duplicated records, incomplete handoffs, and limited visibility across sites. The objective of this portfolio project is to demonstrate how structured data models, validation rules, analytics, and governed workflows can improve visibility while preserving site-level access boundaries.
 
-## Project objectives
+## Project Objectives
 
-- Standardize multi-branch operational data into a single analytical model.
-- Define clear, auditable status and KPI logic.
-- Separate **unknown / N/A values from true zero values**.
-- Provide branch and network views with consistent filters.
-- Aggregate item requirements by item and branch for action-oriented reporting.
-- Demonstrate SQL, Python, dashboard, data-quality, and business-analysis skills.
-- Provide a safe public portfolio version with reproducible synthetic data.
+- Build a clean synthetic operational dataset.
+- Model multiple independent workflow categories.
+- Demonstrate role-based and site-scoped access concepts.
+- Preserve historical values through immutable snapshots.
+- Detect duplicates and data-quality exceptions.
+- Measure backlog, throughput, completion, value, and exception trends.
+- Demonstrate SQL, Python, Power BI, and secure application patterns.
+- Keep all public examples independent from real company terminology or operating procedures.
 
-## Dataset description
+## Fictional Scenario
 
-The repository ships with deterministic synthetic sample data:
+The demo environment represents a fictional network of service locations handling three unrelated record categories:
 
-| File | Grain | Purpose |
-|---|---|---|
-| `data/sample/records.csv` | one row per operational record | status, branch, channel, dates, known value |
-| `data/sample/record_items.csv` | one row per record item | quantity and historical unit-price snapshot |
-| `data/sample/shortages.csv` | one row per item shortage | quantity needed and affected branch |
-| `data/sample/branches.csv` | one row per branch | branch and city dimensions |
-| `data/sample/items.csv` | one row per item | synthetic item master |
+- **Workflow Alpha** — general multi-stage records.
+- **Workflow Beta** — decision-oriented records with configurable analytical rules.
+- **Workflow Gamma** — simplified completion-oriented records.
 
-No row represents a real person, branch, prescription, employee, or company transaction.
+These labels are arbitrary portfolio terminology. They do **not** correspond to any real company channel, service, product, prescription type, internal acronym, or production workflow.
 
-## Tools and technologies
+## Technology Stack
 
-- **Python:** pandas, Streamlit, Plotly
-- **SQL:** SQL Server-compatible schema, views, and KPI queries
-- **Power BI:** model design, DAX measure definitions, report build guide
-- **Analytics engineering:** dimensional modeling, KPI definitions, data validation, testable calculation logic
-- **Business analysis:** requirements, workflows, acceptance criteria, privacy controls, data dictionary
+| Layer | Technologies and patterns |
+|---|---|
+| Application concepts | ASP.NET Core, Razor Pages, service-layer patterns |
+| Persistence | SQL Server concepts, EF Core, indexes, constraints |
+| Security | Identity, RBAC, site-scoped authorization, secure cookies |
+| Analytics | Python, pandas, Streamlit, Plotly |
+| BI | Power BI modeling and DAX documentation |
+| SQL | Analytical queries, data-quality checks, aggregation |
+| Validation | pytest, publication-safety checks, GitHub Actions |
 
-## Data preparation
-
-The portfolio workflow is:
-
-`Synthetic generation → schema validation → type normalization → status logic → analytical aggregates → dashboard/report outputs`
-
-Important rules include stable record IDs, branch ownership, channel classification, historical price snapshots, positive quantities, and explicit treatment of blank values as N/A rather than zero.
-
-## Data model
-
-The analytical model uses a central record fact with supporting dimensions and line-level facts:
+## High-Level Architecture
 
 ```text
-DimBranch ───────┐
-                 ├── FactRecord ─── FactRecordItem ─── DimItem
-DimDate ─────────┤        │
-DimChannel ──────┘        └── FactShortage ─── DimItem
+Synthetic Source Data
+        |
+        v
+Validation & Transformation
+        |
+        v
+Structured Operational Model
+        |
+        +--> SQL Analytics
+        +--> Python Analytics
+        +--> Power BI Semantic Model
+        +--> Data Quality Monitoring
 ```
 
-See `docs/DATA_MODEL.md` and `powerbi/DATA_MODEL.md`.
+## Analytical Domains
 
-## KPIs
+| Domain | Portfolio purpose |
+|---|---|
+| Record Intake | Demonstrate validated ingestion and duplicate controls |
+| Workflow Alpha | Demonstrate multi-stage status analytics |
+| Workflow Beta | Demonstrate configurable rule-based analysis |
+| Workflow Gamma | Demonstrate simplified completion analysis |
+| Exceptions | Demonstrate missing-data and exception monitoring |
+| Resource Requirements | Demonstrate aggregated demand analysis |
+| Fulfilment | Demonstrate generic service-completion analytics |
+| Transfers | Demonstrate generic record movement and lineage concepts |
+| Analytics | Demonstrate site-level and network-level KPIs |
 
-Core KPIs demonstrated:
+## Workflow Design
 
-- Total Records
-- Done Records
-- Not Yet Records
-- Completion Rate
-- Known Record Value
-- Value N/A Records
-- Delivered Records
-- Open Shortage Quantity
-- Records Affected by Shortages
-- Channel Mix
-- Branch / City / Monthly Trends
+The repository uses fictional state transitions to demonstrate reusable concepts such as:
 
-See `docs/KPI_DEFINITIONS.md` for formulas and edge cases.
+- explicit status models;
+- historical snapshots;
+- duplicate prevention;
+- site ownership;
+- configurable thresholds;
+- configurable due-date windows;
+- exception handling;
+- transfer lineage;
+- auditability.
 
-## Analytical methodology
+No workflow in this repository should be interpreted as documentation of a real organization’s operating method.
 
-The analysis follows five principles:
+## Scheduling Analytics
 
-1. **Model first, visualize second** — visuals never define business logic.
-2. **One calculation definition per KPI** — Python, SQL, and Power BI definitions are aligned.
-3. **N/A is not zero** — unknown values are excluded from known-value sums and counted separately.
-4. **Actionable aggregation** — shortage demand is grouped by both item and branch.
-5. **Scoped views** — branch-level analysis can be filtered without changing the global definition of a metric.
+Scheduling examples use **configurable parameters** rather than real business timing rules. Typical analytical categories are:
 
-## Dashboard / report structure
+- Future
+- Due
+- Overdue
 
-The demo dashboard includes:
+The example implementation is intended to teach date modeling and KPI design only.
 
-- Executive KPI strip
-- Channel performance
-- Monthly trend
-- Open item requirements
-- Operational detail table
-- Global filters for city, branch, and channel
+## Resource & Exception Analytics
 
-Power BI documentation also proposes an **Executive Overview**, **Channel Analysis**, **Item Requirements**, **Branch Performance**, and **Data Quality** report structure.
+Synthetic record lines can contain missing or unresolved requirements. The analytics layer demonstrates how to aggregate these exceptions by site, item, category, and period without reproducing any real procurement or operational process.
 
-## Key insights demonstrated by the project
+## Transfer Analytics
 
-The repository demonstrates *how* to derive defensible insights rather than claiming real-world performance results. With the included synthetic dataset, a reviewer can reproduce examples such as channel completion differences, records with unknown values, workload trends over time, and item requirements by branch.
+The project includes a generic transfer concept to demonstrate lineage, source/destination relationships, status tracking, and concurrency-safe design. Transfer states and examples are fictional.
 
-## Screenshots
+## Security Architecture
 
-![Admin dashboard](screenshots/admin_dashboard.png)
-![Branch dashboard](screenshots/branch_dashboard.png)
+The documented security patterns are intentionally generic:
 
-Screenshots are generated from the synthetic dataset and are illustrative portfolio visuals, not production screenshots.
+- authenticated users;
+- role-based authorization;
+- site-scoped data access;
+- backend ownership validation;
+- secure file handling concepts;
+- audit logging;
+- optimistic concurrency;
+- database constraints.
 
-## Repository structure
+These are standard software-engineering practices and are not descriptions of any employer-specific security architecture.
+
+## Data Quality
+
+The project demonstrates reusable validation controls including:
+
+- duplicate detection;
+- positive quantity validation;
+- non-negative numeric values;
+- required-field checks;
+- blank-vs-zero semantics;
+- invalid status transitions;
+- inconsistent dates;
+- orphan records;
+- duplicate transaction references.
+
+## Analytics & KPIs
+
+The portfolio includes generic KPIs such as:
+
+- total records;
+- completed records;
+- open records;
+- completion rate;
+- average processing time;
+- backlog;
+- exception count;
+- known value;
+- missing quantity;
+- site performance;
+- trend analysis.
+
+Any threshold used in demonstrations should be treated as a fictional configurable parameter.
+
+## Synthetic Demo Data
+
+All public datasets are synthetic. Identifiers, names, locations, values, dates, statuses, and distributions are generated for demonstration purposes and are not production exports.
+
+## Dashboard Preview
+
+The screenshots in `screenshots/` are synthetic portfolio visuals. They are intended to demonstrate dashboard design rather than reproduce a private dashboard.
+
+## Power BI
+
+The `powerbi/` folder documents a reproducible semantic-model approach using only synthetic data. No PBIX or production model is included.
+
+Recommended public pages include:
+
+1. Executive Overview
+2. Workflow Alpha Analysis
+3. Workflow Beta Analysis
+4. Workflow Gamma Analysis
+5. Exceptions & Data Quality
+6. Resource Requirements
+7. Site Performance
+8. Trends & Throughput
+
+## Repository Structure
 
 ```text
-prescription-operations-analytics-portfolio/
-├── README.md
-├── PORTFOLIO_NOTES.md
-├── LICENSE
-├── SECURITY.md
-├── CONTRIBUTING.md
-├── CHANGELOG.md
-├── requirements.txt
-├── app.py
-├── src/
-├── tests/
-├── data/sample/
-├── sql/
-├── powerbi/
-├── docs/
-├── examples/
-└── screenshots/
+docs/          Generic architecture, analytics, security, modeling, and validation documentation
+diagrams/      Generic diagrams
+examples/      Reusable code-pattern examples
+sql/           Generic analytical SQL
+sample-data/   Small synthetic datasets
+data/sample/   Synthetic analytics datasets
+src/           Python analytics code
+powerbi/       Power BI modeling documentation
+tests/         Analytics and publication-safety tests
+scripts/       Validation and privacy-scan utilities
+.github/       CI validation workflows
 ```
 
-## Installation / setup
+## How to Explore
 
-```bash
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
-pip install -r requirements.txt
-```
+1. Review the documentation in `docs/`.
+2. Inspect the synthetic datasets.
+3. Review the SQL examples.
+4. Run the Python analytics companion.
+5. Review the Power BI modeling guide.
+6. Run the publication-safety tests before publishing changes.
 
-## How to use
+## Privacy & Publication Safety
 
-Run the dashboard:
+This repository must not contain:
 
-```bash
-streamlit run app.py
-```
+- real customer, patient, employee, or transaction data;
+- real company names, brands, branch identifiers, internal acronyms, or product names;
+- mappings between public demo labels and private terminology;
+- proprietary workflow sequences;
+- real eligibility thresholds or timing windows;
+- internal server names, IP addresses, paths, credentials, or connection strings;
+- production screenshots, exports, attachments, or database files.
 
-Run tests:
+The project should remain understandable as a standalone fictional analytics case study even if the reader has no knowledge of the source organization.
 
-```bash
-pytest -q
-```
+## Limitations
 
-The CSV files can also be loaded directly into Power BI or SQL Server using the documentation in `powerbi/` and `sql/`.
+- This is not a deployable production system.
+- It does not reproduce a specific company’s operating model.
+- All datasets and screenshots are synthetic.
+- Workflow parameters are illustrative and configurable.
+- Power BI is documented without publishing a production PBIX/PBIT model.
 
-## Skills demonstrated
+## Portfolio Disclaimer
 
-- Business requirements and acceptance criteria
-- Operational workflow modeling
-- Data modeling and data dictionary design
-- KPI governance and edge-case handling
-- SQL schema / views / analytical queries
-- Python analytics and reusable calculation functions
-- Power BI modeling and DAX design
-- Data quality and unit testing
-- Dashboard UX and filter design
-- Privacy-by-design and portfolio sanitization
-- Technical documentation and GitHub project packaging
-
-## Future improvements
-
-- Add automated CI for Python tests and SQL linting.
-- Add a Dockerized demo deployment.
-- Add a true semantic model export / `.pbit` template once built in Power BI Desktop.
-- Add role-based demo views and richer drill-through pages.
-- Add synthetic anomaly scenarios and a formal data-quality score.
-- Add automated screenshot generation from the running dashboard.
-
-## Confidentiality statement
-
-This is a reconstructed, generalized portfolio edition. It does **not** contain the original production application source, private business identifiers, real customer/patient information, passwords, credentials, connection strings, server names, or proprietary data. The repository is intended to demonstrate analytical and business-analysis capability only.
+This repository is a **fictionalized, privacy-safe portfolio implementation** built to demonstrate analytics, data modeling, dashboarding, validation, and software-engineering skills. It is not documentation of a real employer, healthcare organization, customer environment, operational workflow, or proprietary business process.

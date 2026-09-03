@@ -1,0 +1,22 @@
+name: Publication safety scan
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - portfolio-v1.1.0-upgrade
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate publication boundary
+        shell: pwsh
+        run: ./scripts/validate-publication.ps1

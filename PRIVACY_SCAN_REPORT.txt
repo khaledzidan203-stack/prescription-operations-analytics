@@ -1,8 +1,12 @@
 PRIVACY SCAN REPORT
-Generated: 2026-08-26
+Generated: 2026-09-01
 
-Files scanned: 42
+Files scanned: 144
 Potential findings: 0
 
-PASS: no internal project names, private IPs, internal Windows paths, concrete credential assignments, or connection-string patterns detected.
-All datasets and screenshots are synthetic.
+PASS: the publication gate found no database artifacts, App_Data, credentials,
+secrets, internal hostnames, absolute internal paths, realistic identity numbers,
+phone numbers, email addresses, or oversized artifacts.
+
+All public datasets and screenshots are synthetic. The validation was performed
+with scripts/validate-publication.ps1 and the portfolio test suite.

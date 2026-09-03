@@ -1,44 +1,38 @@
-# Data Model Documentation
+# Power BI Data Model
 
-## Tables / files
+The public semantic model is built from synthetic, fictional workflow data.
 
-### FactRecord (`records.csv`)
-Grain: one operational record per branch/channel occurrence.
-Primary key: `record_id`.
+## Recommended Star Schema
 
-### FactRecordItem (`record_items.csv`)
-Grain: one item line within a record.
-Relationship: many item lines to one record.
+### Dimensions
 
-### FactShortage (`shortages.csv`)
-Grain: one missing-item requirement for one record and branch.
+- `DimDate`
+- `DimSite`
+- `DimWorkflow`
+- `DimItem`
+- `DimStatus`
 
-### DimBranch (`branches.csv`)
-Grain: one branch.
+### Facts
 
-### DimItem (`items.csv`)
-Grain: one item.
+- `FactRecord` — one synthetic operational record
+- `FactRecordLine` — one item line per record
+- `FactException` — one unresolved analytical exception
+- `FactTransfer` — one generic movement event
+- `FactFulfilment` — one generic fulfilment event
 
-## Relationship diagram
+## Relationships
 
-```text
-DimBranch (1) ─────── (*) FactRecord (1) ─────── (*) FactRecordItem (*) ─────── (1) DimItem
-   │                         │
-   └────────────── (*) FactShortage (*) ─────────────────────────────────────── (1) DimItem
-```
+Use one-to-many, single-direction relationships from dimensions to facts wherever practical.
 
-## Modeling notes
+## Workflow Categories
 
-- `known_value_sar` is nullable. Null means value not known.
-- `unit_price_snapshot` is historical, while `current_unit_price` belongs to the item master.
-- Delivery status is meaningful for Standard records and uses N/A for channels where delivery is outside scope.
+`Workflow Alpha`, `Workflow Beta`, and `Workflow Gamma` are fictional categories created solely for the public portfolio.
 
-## Power BI relationship settings
+## Modeling Rules
 
-- DimBranch[branch_id] 1 → * FactRecord[branch_id]
-- FactRecord[record_id] 1 → * FactRecordItem[record_id]
-- FactRecord[record_id] 1 → * FactShortage[record_id]
-- DimItem[item_id] 1 → * FactRecordItem[item_id]
-- DimItem[item_id] 1 → * FactShortage[item_id]
-
-Prefer single-direction filters from dimensions to facts. Use a proper Date dimension for production-quality time intelligence.
+- Declare grain explicitly for every fact.
+- Keep unknown numeric values as BLANK.
+- Use historical snapshots where past values must remain stable.
+- Keep thresholds and due windows configurable.
+- Avoid bidirectional filters unless a documented analytical need exists.
+- Do not encode private organization terminology or operating rules in the semantic model.

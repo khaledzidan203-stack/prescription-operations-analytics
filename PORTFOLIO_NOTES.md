@@ -1,41 +1,45 @@
 # Portfolio Notes
 
-## What I personally built
+## Project Positioning
 
-I designed the business workflow, analytical logic, KPI framework, data model, dashboard structure, validation rules, and reporting requirements that this public portfolio edition demonstrates. I also translated operational requirements into technical specifications covering branch scoping, status workflows, historical pricing, item requirements, search/filter behavior, and management dashboards.
+This repository demonstrates my ability to translate a fictional distributed-operations scenario into a measurable analytical model, define KPIs, design data structures, build dashboards, implement validation rules, and document technical decisions.
 
-This repository is a confidentiality-safe reconstruction for portfolio use, not a dump of private production source code.
+It is a standalone synthetic portfolio project and should not be interpreted as documentation of an employer's operating model or private application.
 
-## Analytical skills demonstrated
+## Analytical Skills Demonstrated
 
-- Translating an operational process into measurable states and KPIs
+- Translating business questions into measurable states and KPIs
 - Defining grain, keys, relationships, and aggregation rules
-- Separating unknown values from zero values
-- Designing branch/network analysis with consistent filters
-- Building shortage and item-requirement summaries
+- Separating unknown values from true zero values
+- Designing site/network analysis with consistent filters
+- Building exception and resource-requirement summaries
 - Creating reusable Python and SQL calculation logic
 - Designing a Power BI semantic model and DAX measures
 - Testing data quality and calculation edge cases
 
-## Business problems solved
+## Fictional Business Problems Addressed
 
-- Fragmented operational tracking across branches
-- Inconsistent definitions of completion and pending work
-- Limited visibility of item shortages by location
-- Difficulty separating known financial value from missing values
-- Need for branch-level accountability and management-level oversight
+- Fragmented tracking across distributed sites
+- Inconsistent definitions of completion and open work
+- Limited visibility of unresolved requirements by location
+- Difficulty separating known analytical value from missing values
+- Need for site-level accountability and network-level oversight
 - Need for a documented, repeatable reporting model
 
-## Technologies used
+## Technologies Used
 
-Python, pandas, Streamlit, Plotly, SQL Server-compatible SQL, Power BI modeling concepts/DAX, Git/GitHub documentation practices.
+Python, pandas, Streamlit, Plotly, SQL Server-compatible SQL, Power BI modeling concepts/DAX, Git, GitHub, automated validation, and privacy-safe publication practices.
 
-## Interview discussion points
+## Interview Discussion Points
 
-- Why the record grain matters and how duplicate counting is prevented
-- Why historical unit-price snapshots are safer than joining only to current prices
+- Why record grain matters and how duplicate counting is prevented
+- Why historical snapshots can be safer than relying only on current reference values
 - Why N/A must remain different from zero
-- How to design branch-level filters without breaking metric definitions
-- How item requirements should be grouped by Item + Branch for actionability
-- How I would scale the model from a synthetic demo to a governed enterprise semantic model
-- How requirements, data quality, security, and analytics were documented together
+- How to design site-level filters without breaking metric definitions
+- How exception requirements can be grouped for analytical actionability
+- How to scale a synthetic demo into a governed enterprise semantic model
+- How requirements, data quality, security, and analytics can be documented together
+
+## Confidentiality Boundary
+
+Do not use this repository to explain or reconstruct any real company's terminology, operational channels, decision thresholds, scheduling windows, approval sequence, fulfilment process, transfer rules, or internal architecture.

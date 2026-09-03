@@ -1,0 +1,4 @@
+site_id,site_code,site_name,region,is_active
+DEMO-SITE-001,SITE-001,Demo Site North,Region A,true
+DEMO-SITE-002,SITE-002,Demo Site Central,Region B,true
+DEMO-SITE-003,SITE-003,Demo Site Archive,Region C,false

@@ -1,0 +1,5 @@
+item_id,item_code,item_name,item_group,current_reference_value
+DEMO-ITEM-ID-001,DEMO-ITEM-001,Demo Item A,Group A,35.00
+DEMO-ITEM-ID-002,DEMO-ITEM-002,Demo Item B,Group B,60.00
+DEMO-ITEM-ID-003,DEMO-ITEM-003,Demo Item C,Group C,125.00
+DEMO-ITEM-ID-004,DEMO-ITEM-004,Demo Item D,Group D,10.00
