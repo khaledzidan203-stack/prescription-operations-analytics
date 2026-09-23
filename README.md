@@ -4,6 +4,18 @@
 
 This repository is intentionally **generic and synthetic**. It is designed to demonstrate transferable analytics and software-engineering skills without representing, reproducing, or documenting any specific employer, company, customer, internal system, operating model, business rule, or production workflow.
 
+## Featured Portfolio
+
+**Khaled Zidan — Healthcare & Business Data Analytics**
+
+[Saudi Healthcare Analytics](https://github.com/khaledzidan203-stack/saudi-healthcare-analytics) ·
+[Hospital360](https://github.com/khaledzidan203-stack/Hospital360) ·
+[Online Retail Growth & Customer Intelligence](https://github.com/khaledzidan203-stack/online-retail-growth-customer-intelligence) ·
+[Pharmacy Category Management](https://github.com/khaledzidan203-stack/pharmacy-category-management) ·
+[Regional Sales Performance](https://github.com/khaledzidan203-stack/regional-sales-analytics-portfolio)
+
+**Core stack:** Power BI · SQL · Python · DAX · Analytics Engineering · Healthcare / Pharmacy / Retail Analytics
+
 ## Executive Summary
 
 The project models a fictional distributed service network where local sites process operational records through several independent workflow categories. A central analytics layer measures throughput, completion, backlog, value, exceptions, shortages, transfers, and service performance.
