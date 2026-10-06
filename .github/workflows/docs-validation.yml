@@ -1,4 +1,4 @@
-name: Documentation and synthetic-data validation
+name: Analytical and documentation validation
 
 on:
   pull_request:
@@ -12,7 +12,9 @@ permissions:
 
 jobs:
   test:
+    name: Prescription operations analytical quality gate
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -24,7 +26,13 @@ jobs:
           cache: pip
 
       - name: Install test dependencies
-        run: python -m pip install pytest pandas
+        run: python -m pip install "pytest>=8,<9" "pandas>=2.2,<3"
 
-      - name: Run portfolio tests
+      - name: Validate repository contract
+        run: python scripts/validate_repository.py
+
+      - name: Run analytical and publication tests
         run: python -m pytest -q
+
+      - name: Compile Python sources
+        run: python -m py_compile app.py src/analytics.py src/data_quality.py scripts/validate_repository.py tests/test_analytics.py tests/test_sample_baseline.py
