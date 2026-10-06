@@ -1,42 +1,51 @@
 # Presentation Assets
 
-This directory contains presentation-only visual assets for the Prescription Operations Analytics project.
+This directory contains presentation-only visual assets for Prescription Operations Analytics.
 
-## Intended use
+## Current overview
 
-The primary overview image stored here is used by the repository README to summarize the implemented analytical companion and its publication-governance boundary.
+`Prescription Operations Analytics Dashboard.png`
 
-Recommended filename:
+The root README uses this image as a high-level visual summary of the analytical workflow.
 
-`prescription_operations_analytics_overview.png`
+## Evidence-supported scope
 
-The overview should represent only repository-supported claims, including:
+The repository supports:
 
-- fully synthetic operational data only;
-- 500 operational records;
+- 500 synthetic operational records;
 - 1,185 record-item lines;
 - 49 shortage rows;
 - 8 fictional branches;
 - 12 synthetic items;
-- 372 Done records and 128 Not Yet records;
+- 372 Done / 128 Not Yet records;
 - 74.4% completion rate;
 - SAR 82,760.75 known record value;
 - 47 records with unknown value;
 - 158 Delivered records;
 - 126 open shortage units affecting 24 records;
-- Streamlit + pandas + Plotly analytical companion;
-- City, Branch, and Channel filters;
-- channel performance, monthly trend, shortage/resource-requirement analysis, and operational detail;
-- SQL Server schema, views, and KPI queries;
-- pytest analytical tests;
-- publication-safety tests and privacy-governance controls;
-- Power BI documentation/design blueprint only;
-- a separate generic governance model using fictional Workflow Alpha / Beta / Gamma terminology.
+- pandas analytical functions;
+- Streamlit + Plotly application source;
+- SQL Server-compatible schema, views and KPI queries;
+- automated analytical and publication-safety tests;
+- a separate generic workflow-governance model;
+- Power BI design documentation only.
 
 ## Evidence boundary
 
-Assets in this directory are presentation summaries only. They are not source data, runtime validation evidence, SQL execution evidence, Power BI runtime evidence, or proof of any real operational process.
+The infographic is a **presentation schematic**, not a captured Streamlit screenshot.
 
-Authoritative claims remain defined by the committed synthetic CSV files, Python analytics source, SQL scripts, automated tests, publication-safety controls, governance documentation, and GitHub Actions workflows.
+Exact runtime and implementation status is governed by the repository:
 
-The visual must not contain or imply real company names, real prescription identifiers, patient data, private workflow mappings, proprietary thresholds, internal infrastructure, or production screenshots.
+- Python/pandas analytics — implemented.
+- Streamlit/Plotly — implemented source artifact.
+- SQL Server — source artifacts committed; SQL runtime is not executed in CI.
+- Power BI — blueprint only; no PBIP/PBIR/TMDL/PBIX runtime artifact.
+- Generic workflow model — separate synthetic design layer.
+- Excel-style visual iconography, if visible in the schematic, is illustrative only; this repository does not claim an Excel analytical artifact.
+- Branch-performance and shortage visuals in the schematic summarize analytical concepts; exact implemented Streamlit sections are documented in the README and `app.py`.
+
+## Publication-safety note
+
+The image is synthetic and is the only specifically approved presentation asset allowed above the repository's normal 1 MB artifact-size threshold. It remains capped at 2 MB by automated publication checks.
+
+Presentation assets do not replace source data, test evidence, SQL execution evidence, Power BI runtime evidence or real operational screenshots.
