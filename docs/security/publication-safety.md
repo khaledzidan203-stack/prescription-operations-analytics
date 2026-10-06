@@ -19,7 +19,7 @@ allowlist and sanitization process.
 ## Safe construction process
 
 ```text
-Understand private source read-only
+Understand any private source read-only
 -> Select one concept
 -> Recreate a generic artifact
 -> Record action in sanitization manifest
