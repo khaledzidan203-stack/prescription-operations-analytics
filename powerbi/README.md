@@ -1,66 +1,59 @@
-# Power BI Analytics Companion
+# Power BI Analytics Blueprint
 
-This repository contains Power BI **documentation only**. It does not contain a `.pbix` or `.pbit` file. The model is designed to be rebuilt from synthetic CSV sources so every public artifact remains reviewable.
+> **Implementation status — design blueprint only.** This repository does not contain a committed PBIP, PBIR, TMDL, PBIX or PBIT runtime implementation.
 
-## Synthetic Sources
+The Power BI documentation is aligned with the implemented analytics companion under `data/sample/`.
 
-Load the CSV files from `data/sample/`:
+## Synthetic sources
 
-- records
-- record items
-- exceptions
-- sites
-- items
+Load:
 
-Public workflow categories are intentionally fictional:
+- `records.csv`
+- `record_items.csv`
+- `shortages.csv`
+- `branches.csv`
+- `items.csv`
 
-- `Workflow Alpha`
-- `Workflow Beta`
-- `Workflow Gamma`
+These are the same public synthetic files used by the pandas/Streamlit analytics companion.
 
-These categories are arbitrary demonstration labels and must not be mapped to any real organization, internal acronym, product, service channel, or operating process.
-
-## Recommended Report Pages
+## Recommended report pages
 
 1. Executive Overview
-2. Workflow Alpha Analysis
-3. Workflow Beta Analysis
-4. Workflow Gamma Analysis
-5. Exceptions & Data Quality
-6. Resource Requirements
-7. Transfer & Lineage Analysis
-8. Site Performance
-9. Trends & Throughput
+2. Channel Performance
+3. Branch Performance
+4. Monthly Throughput
+5. Shortage / Resource Requirements
+6. Data Quality & N/A Value
+7. Operational Detail
 
-## Recommended Slicers
+## Recommended slicers
 
-- Business date
-- Region
-- Site
-- Workflow category
-- Status
-- Exception category
+- Date
+- City
+- Branch
+- Channel
+- Final Status
+- Delivery Status
 - Item
 
-## Modeling Rules
+## Modeling rules
 
-- Keep unknown numeric values as BLANK rather than silently converting them to zero.
-- Use a proper Date dimension.
+- Keep unknown `known_value_sar` as BLANK rather than converting it to zero.
+- Use a governed Date dimension.
+- Keep record, record-item and shortage grains separate.
 - Use single-direction dimension-to-fact filters by default.
-- Define the grain of each fact table explicitly.
-- Preserve historical numeric snapshots where historical reporting requires them.
-- Use configurable parameters for thresholds and due-date windows.
-- Keep all public KPI logic generic and independent from real company policies.
+- Use historical `unit_price_snapshot` for historical item-line analysis.
+- Count shortage-affected records distinctly to avoid line multiplication.
+- Reconcile DAX totals to the committed Python/SQL KPI definitions before runtime validation is claimed.
 
 See [DATA_MODEL.md](DATA_MODEL.md) and [MEASURES.md](MEASURES.md).
 
-## Publication Safety
+## Governance model boundary
 
-Power BI documentation must not include:
+The separate `sample-data/` Workflow Alpha / Beta / Gamma governance examples are not the input to this Power BI blueprint.
 
-- private terminology or acronyms;
-- mappings from fictional labels to real workflow names;
-- real thresholds, eligibility rules, or time windows;
-- internal organizational structures;
-- production connection information;
-- real screenshots or exported business data.
+They remain a separate generic design layer.
+
+## Evidence boundary
+
+No Power BI runtime result is claimed until a source-controlled implementation and retained execution/reconciliation evidence are added.
