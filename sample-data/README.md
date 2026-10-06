@@ -1,6 +1,6 @@
 # Synthetic Workflow Sample Data
 
-Every file in this directory is hand-constructed portfolio data. No row was exported from an operational database, workbook, screenshot, or application.
+Every file in this directory is hand-constructed synthetic reference data. No row was exported from an operational database, workbook, screenshot, or application.
 
 ## Identifier Convention
 
@@ -22,7 +22,7 @@ All names, identifiers, locations, values, dates, quantities, and states exist o
 | `exceptions.synthetic.csv` | One synthetic exception row | Open/closed exception states |
 | `transfer-events.synthetic.csv` | One synthetic transfer event | Generic source/destination lineage |
 
-The larger `data/sample/` dataset remains a synthetic analytics companion dataset.
+The larger `data/sample/` dataset is the separate synthetic analytics companion dataset used by the executable analytics layer.
 
 ## Privacy Rule
 
