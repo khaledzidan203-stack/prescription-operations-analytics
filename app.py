@@ -4,8 +4,8 @@ import plotly.express as px
 from src.analytics import load_data, kpi_summary, channel_summary, monthly_trend, shortage_summary
 
 st.set_page_config(page_title="Prescription Operations Analytics", layout="wide")
-st.title("Prescription Operations Analytics — Synthetic Portfolio Demo")
-st.caption("All data in this repository is synthetic. This demo generalizes a multi-branch operational analytics workflow.")
+st.title("Prescription Operations Analytics — Synthetic Operations Intelligence")
+st.caption("All data is synthetic. The application demonstrates multi-branch operational analytics, explicit missing-value handling, and shortage/resource-requirement monitoring.")
 
 records, items, shortages, branches = load_data()
 city = st.sidebar.multiselect("City", sorted(records.city.unique()))
