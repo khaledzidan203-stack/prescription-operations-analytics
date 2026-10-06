@@ -19,6 +19,10 @@ $textExtensions = @(
     ".sql", ".cs", ".ps1", ".example", ".gitignore"
 )
 
+$approvedLargePresentationAssets = @(
+    "docs/assets/Prescription Operations Analytics Dashboard.png"
+)
+
 function Add-Finding([string]$Rule, [string]$RelativePath) {
     $findings.Add([PSCustomObject]@{
         Rule = $Rule
@@ -41,8 +45,16 @@ foreach ($file in $files) {
         Add-Finding "prohibited-directory" $relative
     }
 
+    $relativeNormalized = $relative.Replace("\", "/")
     if ($file.Length -gt 1MB) {
-        Add-Finding "oversized-artifact" $relative
+        if ($approvedLargePresentationAssets -contains $relativeNormalized) {
+            if ($file.Extension.ToLowerInvariant() -ne ".png" -or $file.Length -gt 2MB) {
+                Add-Finding "invalid-approved-presentation-asset" $relative
+            }
+        }
+        else {
+            Add-Finding "oversized-artifact" $relative
+        }
     }
 
     $isText = $textExtensions -contains $file.Extension.ToLowerInvariant() -or $file.Name -eq ".gitignore"
