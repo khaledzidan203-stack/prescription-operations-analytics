@@ -1,246 +1,348 @@
-# Distributed Operations Analytics Platform
+# Prescription Operations Analytics
 
-> A privacy-safe portfolio project demonstrating operational analytics, workflow modeling, data quality, security patterns, synthetic data, SQL, Python, and Power BI concepts.
+## Synthetic Multi-Branch Operations Intelligence & Publication-Safe Governance
 
-This repository is intentionally **generic and synthetic**. It is designed to demonstrate transferable analytics and software-engineering skills without representing, reproducing, or documenting any specific employer, company, customer, internal system, operating model, business rule, or production workflow.
+[![Analytical Validation](https://github.com/khaledzidan203-stack/prescription-operations-analytics/actions/workflows/docs-validation.yml/badge.svg)](https://github.com/khaledzidan203-stack/prescription-operations-analytics/actions/workflows/docs-validation.yml)
+[![Publication Safety](https://github.com/khaledzidan203-stack/prescription-operations-analytics/actions/workflows/security-scan.yml/badge.svg)](https://github.com/khaledzidan203-stack/prescription-operations-analytics/actions/workflows/security-scan.yml)
 
-## Featured Portfolio
+Prescription Operations Analytics is a synthetic operational-analytics project for measuring record throughput, completion, backlog, channel performance, known-versus-unknown value, monthly trends and open shortage/resource requirements across a fictional multi-branch network.
 
-**Khaled Zidan — Healthcare & Business Data Analytics**
+The repository also contains a **separate generic workflow-governance model** that demonstrates site isolation, security, transfer lineage, historical snapshots, configurable workflow concepts and publication-safety controls.
 
-[Saudi Healthcare Analytics](https://github.com/khaledzidan203-stack/saudi-healthcare-analytics) ·
-[Hospital360](https://github.com/khaledzidan203-stack/Hospital360) ·
-[Online Retail Growth & Customer Intelligence](https://github.com/khaledzidan203-stack/online-retail-growth-customer-intelligence) ·
-[Pharmacy Category Management](https://github.com/khaledzidan203-stack/pharmacy-category-management) ·
-[Regional Sales Performance](https://github.com/khaledzidan203-stack/regional-sales-analytics-portfolio)
+> **Privacy boundary:** all records, identifiers, branches, items, customer keys, values, dates and workflow examples are synthetic. No real patient, customer, employee, company, prescription, production-system or confidential operational data is included.
 
-**Core stack:** Power BI · SQL · Python · DAX · Analytics Engineering · Healthcare / Pharmacy / Retail Analytics
+<img src="docs/assets/Prescription%20Operations%20Analytics%20Dashboard.png" alt="Prescription Operations Analytics overview" width="100%">
 
-## Executive Summary
+> **Visual evidence note:** the image above is a presentation schematic, not a captured Streamlit session. Exact tool status and KPI values are governed by the source files, automated tests and evidence map.
 
-The project models a fictional distributed service network where local sites process operational records through several independent workflow categories. A central analytics layer measures throughput, completion, backlog, value, exceptions, shortages, transfers, and service performance.
+**Start here:** [Case study](docs/CASE_STUDY.md) · [Technical walkthrough](docs/TECHNICAL_WALKTHROUGH.md) · [Evidence map](docs/PROJECT_EVIDENCE_MAP.md) · [Project index](docs/PROJECT_INDEX.md) · [Final validation](docs/FINAL_RELEASE_VALIDATION.md)
 
-The public implementation focuses on reusable technical patterns rather than any real organization’s process.
+## Project at a glance
 
-## Business Problem
-
-Distributed operations often create fragmented data, inconsistent status definitions, duplicated records, incomplete handoffs, and limited visibility across sites. The objective of this portfolio project is to demonstrate how structured data models, validation rules, analytics, and governed workflows can improve visibility while preserving site-level access boundaries.
-
-## Project Objectives
-
-- Build a clean synthetic operational dataset.
-- Model multiple independent workflow categories.
-- Demonstrate role-based and site-scoped access concepts.
-- Preserve historical values through immutable snapshots.
-- Detect duplicates and data-quality exceptions.
-- Measure backlog, throughput, completion, value, and exception trends.
-- Demonstrate SQL, Python, Power BI, and secure application patterns.
-- Keep all public examples independent from real company terminology or operating procedures.
-
-## Fictional Scenario
-
-The demo environment represents a fictional network of service locations handling three unrelated record categories:
-
-- **Workflow Alpha** — general multi-stage records.
-- **Workflow Beta** — decision-oriented records with configurable analytical rules.
-- **Workflow Gamma** — simplified completion-oriented records.
-
-These labels are arbitrary portfolio terminology. They do **not** correspond to any real company channel, service, product, prescription type, internal acronym, or production workflow.
-
-## Technology Stack
-
-| Layer | Technologies and patterns |
+| Area | Current implementation |
 |---|---|
-| Application concepts | ASP.NET Core, Razor Pages, service-layer patterns |
-| Persistence | SQL Server concepts, EF Core, indexes, constraints |
-| Security | Identity, RBAC, site-scoped authorization, secure cookies |
-| Analytics | Python, pandas, Streamlit, Plotly |
-| BI | Power BI modeling and DAX documentation |
-| SQL | Analytical queries, data-quality checks, aggregation |
-| Validation | pytest, publication-safety checks, GitHub Actions |
+| Primary analytics dataset | `data/sample/` committed synthetic fixtures |
+| Records | 500 |
+| Record-item lines | 1,185 |
+| Shortage rows | 49 |
+| Branches | 8 fictional branches |
+| Items | 12 synthetic items |
+| Synthetic customer keys | 253 |
+| Done / Not Yet | 372 / 128 |
+| Completion rate | 74.4% |
+| Known record value | SAR 82,760.75 |
+| Value N/A records | 47 |
+| Delivered records | 158 |
+| Open shortage quantity | 126 units |
+| Records affected by shortages | 24 |
+| Python analytics | pandas analytical functions + data-quality checks |
+| Interactive application | Streamlit + Plotly source implementation |
+| SQL | SQL Server-compatible schema, views and KPI queries |
+| Power BI | design blueprint only; no PBIP/PBIR/TMDL/PBIX runtime artifact |
+| Governance layer | separate `sample-data/` fictional workflow model |
+| Validation | pytest + publication-safety tests + PowerShell scan + GitHub Actions |
 
-## High-Level Architecture
+## The two-layer design
 
-```text
-Synthetic Source Data
-        |
-        v
-Validation & Transformation
-        |
-        v
-Structured Operational Model
-        |
-        +--> SQL Analytics
-        +--> Python Analytics
-        +--> Power BI Semantic Model
-        +--> Data Quality Monitoring
-```
+This repository intentionally contains **two synthetic layers**. They serve different purposes and should not be interpreted as one physical model.
 
-## Analytical Domains
+### Layer A — Operational Analytics Companion
 
-| Domain | Portfolio purpose |
-|---|---|
-| Record Intake | Demonstrate validated ingestion and duplicate controls |
-| Workflow Alpha | Demonstrate multi-stage status analytics |
-| Workflow Beta | Demonstrate configurable rule-based analysis |
-| Workflow Gamma | Demonstrate simplified completion analysis |
-| Exceptions | Demonstrate missing-data and exception monitoring |
-| Resource Requirements | Demonstrate aggregated demand analysis |
-| Fulfilment | Demonstrate generic service-completion analytics |
-| Transfers | Demonstrate generic record movement and lineage concepts |
-| Analytics | Demonstrate site-level and network-level KPIs |
+Location:
 
-## Workflow Design
+`data/sample/`
 
-The repository uses fictional state transitions to demonstrate reusable concepts such as:
+Used by:
 
-- explicit status models;
-- historical snapshots;
-- duplicate prevention;
-- site ownership;
-- configurable thresholds;
-- configurable due-date windows;
-- exception handling;
+- `src/analytics.py`
+- `src/data_quality.py`
+- `app.py`
+- `sql/`
+- current analytical regression tests
+- current Power BI design blueprint
+
+Files:
+
+- `records.csv`
+- `record_items.csv`
+- `shortages.csv`
+- `branches.csv`
+- `items.csv`
+
+This layer uses Branch / Channel / Done / Not Yet / Shortage terminology and powers the implemented analytics application.
+
+### Layer B — Generic Workflow Governance Model
+
+Location:
+
+`sample-data/`
+
+This separate hand-constructed synthetic layer demonstrates:
+
+- fictional Workflow Alpha / Beta / Gamma categories;
+- site-scoped governance concepts;
+- generic exceptions;
 - transfer lineage;
-- auditability.
+- security and authorization patterns;
+- configurable workflow examples;
+- publication release gates.
 
-No workflow in this repository should be interpreted as documentation of a real organization’s operating method.
+It is **not** loaded by `app.py`.
 
-## Scheduling Analytics
+See [Analytics Dataset and Governance Model Boundary](docs/ANALYTICS_DATASET_BOUNDARY.md).
 
-Scheduling examples use **configurable parameters** rather than real business timing rules. Typical analytical categories are:
+## Business problem
 
-- Future
-- Due
-- Overdue
+Distributed operations can produce fragmented visibility across branches, channels and item requirements. A useful analytical layer needs to answer:
 
-The example implementation is intended to teach date modeling and KPI design only.
+- How many records were received?
+- How many are Done versus Not Yet?
+- What is the completion rate?
+- How does workload vary by channel and month?
+- How much record value is known?
+- How many records have value recorded as N/A?
+- Which shortage requirements need action by item and branch?
+- How many records are affected by shortages?
+- Are analytical totals being inflated by item-line joins?
+- Can the public repository remain useful without exposing private operational information?
 
-## Resource & Exception Analytics
-
-Synthetic record lines can contain missing or unresolved requirements. The analytics layer demonstrates how to aggregate these exceptions by site, item, category, and period without reproducing any real procurement or operational process.
-
-## Transfer Analytics
-
-The project includes a generic transfer concept to demonstrate lineage, source/destination relationships, status tracking, and concurrency-safe design. Transfer states and examples are fictional.
-
-## Security Architecture
-
-The documented security patterns are intentionally generic:
-
-- authenticated users;
-- role-based authorization;
-- site-scoped data access;
-- backend ownership validation;
-- secure file handling concepts;
-- audit logging;
-- optimistic concurrency;
-- database constraints.
-
-These are standard software-engineering practices and are not descriptions of any employer-specific security architecture.
-
-## Data Quality
-
-The project demonstrates reusable validation controls including:
-
-- duplicate detection;
-- positive quantity validation;
-- non-negative numeric values;
-- required-field checks;
-- blank-vs-zero semantics;
-- invalid status transitions;
-- inconsistent dates;
-- orphan records;
-- duplicate transaction references.
-
-## Analytics & KPIs
-
-The portfolio includes generic KPIs such as:
-
-- total records;
-- completed records;
-- open records;
-- completion rate;
-- average processing time;
-- backlog;
-- exception count;
-- known value;
-- missing quantity;
-- site performance;
-- trend analysis.
-
-Any threshold used in demonstrations should be treated as a fictional configurable parameter.
-
-## Synthetic Demo Data
-
-All public datasets are synthetic. Identifiers, names, locations, values, dates, statuses, and distributions are generated for demonstration purposes and are not production exports.
-
-## Dashboard Preview
-
-The screenshots in `screenshots/` are synthetic portfolio visuals. They are intended to demonstrate dashboard design rather than reproduce a private dashboard.
-
-## Power BI
-
-The `powerbi/` folder documents a reproducible semantic-model approach using only synthetic data. No PBIX or production model is included.
-
-Recommended public pages include:
-
-1. Executive Overview
-2. Workflow Alpha Analysis
-3. Workflow Beta Analysis
-4. Workflow Gamma Analysis
-5. Exceptions & Data Quality
-6. Resource Requirements
-7. Site Performance
-8. Trends & Throughput
-
-## Repository Structure
+## Analytics architecture
 
 ```text
-docs/          Generic architecture, analytics, security, modeling, and validation documentation
-diagrams/      Generic diagrams
-examples/      Reusable code-pattern examples
-sql/           Generic analytical SQL
-sample-data/   Small synthetic datasets
-data/sample/   Synthetic analytics datasets
-src/           Python analytics code
-powerbi/       Power BI modeling documentation
-tests/         Analytics and publication-safety tests
-scripts/       Validation and privacy-scan utilities
-.github/       CI validation workflows
+Committed Synthetic Analytics CSV
+        ↓
+Data Quality & Type Handling
+        ↓
+Record / Item-Line / Shortage Model
+        ↓
+pandas Analytical Functions
+        ↓
+┌──────────────────┬────────────────────┐
+│ Streamlit/Plotly │ SQL Server Source  │
+│ Interactive App  │ Views + KPI Query  │
+└──────────────────┴────────────────────┘
+        ↓
+Power BI Design Blueprint
+        ↓
+KPI / Trend / Shortage / Data-Quality Analysis
 ```
 
-## How to Explore
+The broader workflow/security/governance design remains a separate synthetic layer.
 
-1. Review the documentation in `docs/`.
-2. Inspect the synthetic datasets.
-3. Review the SQL examples.
-4. Run the Python analytics companion.
-5. Review the Power BI modeling guide.
-6. Run the publication-safety tests before publishing changes.
+## Analytical grains
 
-## Privacy & Publication Safety
+| Dataset | Grain |
+|---|---|
+| `records.csv` | one operational record |
+| `record_items.csv` | one item line within a record |
+| `shortages.csv` | one shortage requirement for one record, branch and item |
+| `branches.csv` | one branch |
+| `items.csv` | one item |
 
-This repository must not contain:
+Keeping those grains explicit prevents record-level KPIs from being multiplied by item-line joins.
 
-- real customer, patient, employee, or transaction data;
-- real company names, brands, branch identifiers, internal acronyms, or product names;
-- mappings between public demo labels and private terminology;
-- proprietary workflow sequences;
-- real eligibility thresholds or timing windows;
-- internal server names, IP addresses, paths, credentials, or connection strings;
-- production screenshots, exports, attachments, or database files.
+## KPI framework
 
-The project should remain understandable as a standalone fictional analytics case study even if the reader has no knowledge of the source organization.
+| KPI | Definition |
+|---|---|
+| Total Records | record count |
+| Done Records | records where `final_status = Done` |
+| Not Yet Records | records where `final_status = Not Yet` |
+| Completion Rate | Done Records / Total Records |
+| Known Record Value | sum of non-null `known_value_sar` |
+| Value N/A Records | count where `known_value_sar` is null |
+| Delivered Records | records where `delivery_status = Delivered` |
+| Open Shortage Qty | sum of open `required_qty` |
+| Records Affected by Shortages | distinct record count in shortage rows |
+
+### Critical missing-value rule
+
+**N/A is not zero.**
+
+A missing `known_value_sar` is an explicit data-completeness state and must not be silently converted to zero for classification or KPI interpretation.
+
+## Current synthetic baseline
+
+The committed analytics sample reconciles to:
+
+| KPI | Value |
+|---|---:|
+| Total Records | 500 |
+| Done Records | 372 |
+| Not Yet Records | 128 |
+| Completion Rate | 74.4% |
+| Known Record Value | SAR 82,760.75 |
+| Value N/A Records | 47 |
+| Delivered Records | 158 |
+| Open Shortage Qty | 126 |
+| Records Affected by Shortages | 24 |
+
+### Channel distribution
+
+| Channel | Records | Done |
+|---|---:|---:|
+| Standard | 310 | 236 |
+| Call-Back | 109 | 73 |
+| Pickup | 81 | 63 |
+
+The analytical sample covers May–August 2026.
+
+## Streamlit application
+
+`app.py` implements an interactive synthetic analytics companion with:
+
+- City filter;
+- Branch filter;
+- Channel filter;
+- KPI cards;
+- Channel Performance table and chart;
+- Monthly Trend;
+- Open Item Requirements;
+- Operational Detail.
+
+Run locally with:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The application is implemented as source code. This repository does not claim a hosted Streamlit deployment.
+
+## Python analytics layer
+
+`src/analytics.py` provides reusable functions for:
+
+- loading the synthetic analytics fixtures;
+- overall KPI calculation;
+- channel-level performance;
+- monthly record trends;
+- shortage/resource-requirement aggregation.
+
+`src/data_quality.py` checks required columns, record uniqueness, controlled final status and non-negative known values.
+
+## SQL Server analytical layer
+
+The SQL implementation mirrors the same analytics-companion model:
+
+- `sql/01_schema.sql` — Branch, Item, Record, RecordItem and Shortage tables
+- `sql/02_views.sql` — record analytics and open item requirements
+- `sql/03_kpi_queries.sql` — overall KPIs, channel performance and shortage action list
+
+SQL Server is **not provisioned by GitHub Actions**, so the committed SQL source is implementation evidence rather than a fresh CI runtime execution claim.
+
+## Power BI boundary
+
+The `powerbi/` folder is aligned with `data/sample/` and contains:
+
+- recommended model design;
+- suggested DAX measures;
+- report-page guidance.
+
+There is currently **no committed PBIP, PBIR, TMDL, PBIX or PBIT runtime implementation**.
+
+Power BI is therefore a **design blueprint only**.
+
+## Publication governance
+
+A major part of this project is safe public engineering practice.
+
+Automated controls include:
+
+- prohibited database/archive/key file detection;
+- forbidden directory checks;
+- artifact-size limits;
+- explicit approval for the synthetic presentation image only;
+- identity-like number detection;
+- phone-like pattern checks;
+- internal-host checks;
+- secret-assignment checks;
+- private-terminology checks;
+- synthetic identifier rules;
+- reference integrity;
+- positive-quantity checks;
+- relative Markdown-link validation.
+
+The repository also retains:
+
+- `PUBLICATION_ALLOWLIST.md`
+- `PUBLICATION_DENYLIST.md`
+- `SANITIZATION_MANIFEST.md`
+- `PRIVACY_SCAN_REPORT.txt`
+- documented release gates.
+
+## Validation
+
+Current automated validation covers:
+
+- committed analytics-sample baseline;
+- N/A-versus-zero semantics;
+- channel reconciliation;
+- monthly trend reconciliation;
+- shortage quantity and distinct affected-record logic;
+- generic synthetic governance references;
+- publication safety;
+- repository documentation/evidence contract;
+- Python syntax compilation.
+
+Run:
+
+```bash
+python -m pytest -q
+python scripts/validate_repository.py
+```
+
+The current `data/sample/` files are treated as committed synthetic fixtures. The repository does **not** claim fixed-seed regeneration for that specific dataset because no generator for it is retained.
+
+## Presentation evidence
+
+The image under `docs/assets/` is a synthetic presentation schematic.
+
+No real operational screenshot is included or required.
+
+Future screenshots must follow [the synthetic screenshot plan](docs/screenshots/SCREENSHOT_PLAN.md).
+
+## Repository structure
+
+```text
+app.py                  Streamlit analytical application
+data/sample/            implemented analytics-companion fixtures
+src/                    pandas analytics + data-quality logic
+sql/                    SQL Server-compatible analytical layer
+powerbi/                Power BI design blueprint
+tests/                  analytics + synthetic-data + publication-safety tests
+scripts/                publication scans and repository validator
+sample-data/            separate generic workflow-governance fixtures
+docs/                   analytics, architecture, governance and evidence
+docs/assets/            presentation assets
+diagrams/               generic architecture diagrams
+.github/workflows/      analytical validation + publication-safety CI
+```
+
+## Documentation
+
+- [Project Index](docs/PROJECT_INDEX.md)
+- [Case Study](docs/CASE_STUDY.md)
+- [Technical Walkthrough](docs/TECHNICAL_WALKTHROUGH.md)
+- [Project Evidence Map](docs/PROJECT_EVIDENCE_MAP.md)
+- [Analytics Dataset Boundary](docs/ANALYTICS_DATASET_BOUNDARY.md)
+- [Analytics Architecture](docs/ARCHITECTURE.md)
+- [Analytics Data Model](docs/DATA_MODEL.md)
+- [KPI Definitions](docs/KPI_DEFINITIONS.md)
+- [Testing](docs/TESTING.md)
+- [Power BI Blueprint](powerbi/README.md)
+- [Release Gates](docs/validation/release-gates.md)
+- [Final Release Validation](docs/FINAL_RELEASE_VALIDATION.md)
 
 ## Limitations
 
-- This is not a deployable production system.
-- It does not reproduce a specific company’s operating model.
-- All datasets and screenshots are synthetic.
-- Workflow parameters are illustrative and configurable.
-- Power BI is documented without publishing a production PBIX/PBIT model.
+- All data is synthetic.
+- The analytics companion is a compact demonstration dataset rather than a production-scale event store.
+- The current sample is a committed fixture, not a reproducibly generated fixed-seed dataset.
+- Streamlit source is implemented but no hosted runtime is claimed.
+- SQL runtime execution is not part of CI.
+- Power BI is design-only.
+- No real operational dashboard screenshots are published.
+- The generic workflow-governance model is intentionally separate from the analytics companion and must not be reverse-mapped to private terminology.
 
-## Portfolio Disclaimer
-
-This repository is a **fictionalized, privacy-safe portfolio implementation** built to demonstrate analytics, data modeling, dashboarding, validation, and software-engineering skills. It is not documentation of a real employer, healthcare organization, customer environment, operational workflow, or proprietary business process.
+Licensed under the [MIT License](LICENSE).
