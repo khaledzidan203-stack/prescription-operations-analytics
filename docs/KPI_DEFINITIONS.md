@@ -1,24 +1,35 @@
 # KPI Definitions
 
-> Original analytics-companion definitions. See the expanded
-> [`operational-kpis.md`](kpi_dictionary/operational-kpis.md) for workflow KPIs and
-> their grains/limitations.
+These definitions apply to the implemented analytics companion under `data/sample/`.
 
 | KPI | Definition | Notes |
 |---|---|---|
 | Total Records | COUNT(record_id) | current filter context |
-| Done Records | records where `final_status = Done` | |
-| Not Yet Records | records where `final_status = Not Yet` | |
+| Done Records | records where `final_status = Done` | record grain |
+| Not Yet Records | records where `final_status = Not Yet` | record grain |
 | Completion Rate | Done Records / Total Records | safe divide |
-| Known Record Value | SUM(`known_value_sar`) excluding null | never convert null to zero for classification |
-| Value N/A Records | COUNT where `known_value_sar` is null | explicit data-completeness KPI |
-| Delivered Records | COUNT where `delivery_status = Delivered` | mainly Standard channel |
-| Open Shortage Qty | SUM(`required_qty`) for open shortages | grouped by Item + Branch for action |
-| Records Affected | DISTINCTCOUNT(`record_id`) in shortages | avoids item-line double counting |
+| Known Record Value | SUM(`known_value_sar`) excluding null | null is not zero |
+| Value N/A Records | COUNT where `known_value_sar` is null | explicit completeness KPI |
+| Delivered Records | COUNT where `delivery_status = Delivered` | record grain |
+| Open Shortage Qty | SUM(`required_qty`) for open shortage rows | shortage grain |
+| Records Affected | DISTINCTCOUNT(`record_id`) in shortages | avoids line double counting |
+
+## Current committed baseline
+
+- Total Records: 500
+- Done Records: 372
+- Not Yet Records: 128
+- Completion Rate: 74.4%
+- Known Record Value: SAR 82,760.75
+- Value N/A Records: 47
+- Delivered Records: 158
+- Open Shortage Qty: 126
+- Records Affected: 24
 
 ## Edge cases
 
-- A record with no items is **N/A**, not zero-value.
+- Unknown value is N/A, not zero.
 - Completion rate uses record count, not item count.
-- Historical value uses item-line snapshots, not current master price.
-- Shortage quantity and shortage record count are different metrics.
+- Historical item-line analysis uses `unit_price_snapshot`.
+- Shortage quantity and shortage-record count are different metrics.
+- Record-level totals must not be multiplied by record-item joins.
