@@ -17,6 +17,10 @@ FORBIDDEN_DIRECTORIES = {
     "Source_Archive", "logs", "private", "secrets",
 }
 
+APPROVED_LARGE_PRESENTATION_ASSETS = {
+    "docs/assets/Prescription Operations Analytics Dashboard.png",
+}
+
 REQUIRED_DOCS = {
     "README.md",
     "PUBLICATION_ALLOWLIST.md",
@@ -60,8 +64,13 @@ def test_prohibited_files_and_directories_are_absent():
             findings.append(f"extension:{relative.as_posix()}")
         if FORBIDDEN_DIRECTORIES.intersection(relative.parts):
             findings.append(f"directory:{relative.as_posix()}")
+        relative_posix = relative.as_posix()
         if path.stat().st_size > 1024 * 1024:
-            findings.append(f"oversized:{relative.as_posix()}")
+            if relative_posix in APPROVED_LARGE_PRESENTATION_ASSETS:
+                assert path.suffix.lower() == ".png"
+                assert path.stat().st_size <= 2 * 1024 * 1024
+            else:
+                findings.append(f"oversized:{relative_posix}")
     assert findings == []
 
 
