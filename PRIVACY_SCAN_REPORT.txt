@@ -1,12 +1,21 @@
 PRIVACY SCAN REPORT
-Generated: 2026-09-01
+Latest CI scan: 2026-10-06 UTC
 
-Files scanned: 144
-Potential findings: 0
+Files scanned: 154
+Sensitive findings: 0
 
-PASS: the publication gate found no database artifacts, App_Data, credentials,
+PASS: the publication gate found no prohibited database artifacts, credentials,
 secrets, internal hostnames, absolute internal paths, realistic identity numbers,
-phone numbers, email addresses, or oversized artifacts.
+phone-like values, or unapproved oversized artifacts.
 
-All public datasets and screenshots are synthetic. The validation was performed
-with scripts/validate-publication.ps1 and the portfolio test suite.
+The generated presentation image at:
+docs/assets/Prescription Operations Analytics Dashboard.png
+is an explicitly approved synthetic asset. It is the only presentation asset
+allowed above the normal 1 MB repository threshold and remains capped at 2 MB.
+
+The current validation was performed with scripts/validate-publication.ps1,
+scripts/scan-sensitive-paths.ps1, the analytical repository validator, and the
+pytest analytical/publication-safety suite in GitHub Actions.
+
+All committed analytical and governance datasets are synthetic. No real
+operational screenshot is claimed.
